@@ -1,15 +1,19 @@
-package com.developer.jember.belajarbahasac;
+package com.developer.jember.jdapps;
 
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
+
+import com.developer.jember.jdapps.Tabs.SlidingTabLayout;
 
 public class ActivitySatu extends ActionBarActivity{
     private Toolbar toolbar;
+    private ViewPager mPager;
+    private SlidingTabLayout mTabs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +22,17 @@ public class ActivitySatu extends ActionBarActivity{
         //toolbar
         toolbar= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Sliding Tab
+        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager.setAdapter(new MyAdapter(getSupportFragmentManager(), this));
+
+        mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
+        mTabs.setDistributeEvenly(true);
+        mTabs.setCustomTabView(R.layout.tab_view, R.id.tabTeks);
+        mTabs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        mTabs.setSelectedIndicatorColors(getResources().getColor(R.color.colorAccent));
+        mTabs.setViewPager(mPager);
     }
 
     @Override

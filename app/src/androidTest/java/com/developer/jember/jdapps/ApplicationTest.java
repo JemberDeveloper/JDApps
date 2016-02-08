@@ -1,4 +1,4 @@
-package com.developer.jember.belajarbahasac;
+package com.developer.jember.jdapps;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
